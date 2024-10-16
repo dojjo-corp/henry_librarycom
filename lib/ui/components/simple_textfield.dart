@@ -17,14 +17,14 @@ class SimpleTextfield extends StatefulWidget {
 }
 
 class _SimpleTextfieldState extends State<SimpleTextfield> {
-  bool _isObscured = false;
+  bool _isObscured = true;
   @override
   Widget build(BuildContext context) {
     bool isPassword = widget.obscureText;
 
     return TextFormField(
       controller: widget.controller,
-      obscureText: _isObscured,
+      obscureText: isPassword && _isObscured,
       decoration: InputDecoration(
         filled: true,
         fillColor: Colors.grey[100],

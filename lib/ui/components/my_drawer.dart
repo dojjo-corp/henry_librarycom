@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:librarycom/utils/global_methods.dart';
 
 class MyDrawer extends StatefulWidget {
@@ -11,6 +10,8 @@ class MyDrawer extends StatefulWidget {
 }
 
 class _MyDrawerState extends State<MyDrawer> {
+  final auth = FirebaseAuth.instance;
+
   signOut() {
     showMyDialog(
       context,
@@ -45,95 +46,103 @@ class _MyDrawerState extends State<MyDrawer> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // todo: DRAWER HEADER
-          const DrawerHeader(
-            margin: EdgeInsets.all(0),
-            child: Column(
-              children: [
-                CircleAvatar(),
-                Text(
-                  "Username",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24,
+          UserAccountsDrawerHeader(
+            margin: const EdgeInsets.all(0),
+            // padding: EdgeInsets.all(0),
+            accountEmail: Text(
+              auth.currentUser!.email!,
+              style: const TextStyle(
+                  // fontWeight: FontWeight.bold,
                   ),
-                ),
-                Text("email@gmail.com"),
-              ],
+            ),
+            accountName: const Text(
+              "Martinson Joshua Tetteh",
+              style: TextStyle(
+                  // color: Colors.grey[800],
+
+                  ),
+            ),
+            currentAccountPicture: const CircleAvatar(
+              foregroundImage: AssetImage("assets/icons/community.png"),
             ),
           ),
 
           // todo: DRAWER BODY
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, "/my-profile");
-                    },
-                    child: const ListTile(
-                      leading: Icon(Icons.person_outline_outlined),
-                      title: Text(
-                        "My Profile",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, "/my-profile");
+                      },
+                      child: const ListTile(
+                        leading: Icon(Icons.person_outline_outlined),
+                        title: Text(
+                          "My Profile",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, "/my-profile");
-                    },
-                    child: const ListTile(
-                      leading: Icon(Icons.person_outline_outlined),
-                      title: Text(
-                        "My Profile",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, "/my-profile");
+                      },
+                      child: const ListTile(
+                        leading: Icon(Icons.person_outline_outlined),
+                        title: Text(
+                          "My Profile",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, "/my-profile");
-                    },
-                    child: const ListTile(
-                      leading: Icon(Icons.person_outline_outlined),
-                      title: Text(
-                        "My Profile",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, "/my-profile");
+                      },
+                      child: const ListTile(
+                        leading: Icon(Icons.person_outline_outlined),
+                        title: Text(
+                          "My Profile",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, "/my-profile");
-                    },
-                    child: const ListTile(
-                      leading: Icon(Icons.person_outline_outlined),
-                      title: Text(
-                        "My Profile",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, "/my-profile");
+                      },
+                      child: const ListTile(
+                        leading: Icon(Icons.person_outline_outlined),
+                        title: Text(
+                          "My Profile",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  TextButton(
-                    onPressed: signOut,
-                    child: Text(
-                      "Sign out",
-                      style: TextStyle(
-                        color: Colors.red[400],
-                        fontWeight: FontWeight.bold,
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    TextButton(
+                      onPressed: signOut,
+                      
+                      child: Text(
+                        "Sign out",
+                        style: TextStyle(
+                          color: Colors.red[400],
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              )
-            ],
+                  ],
+                )
+              ],
+            ),
           ),
         ],
       ),

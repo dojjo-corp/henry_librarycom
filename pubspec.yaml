@@ -41,6 +41,13 @@ dependencies:
   cloud_firestore: ^5.4.4
   firebase_auth: ^5.3.1
   google_fonts: ^6.2.1
+  flutter_launcher_icons: ^0.14.1
+  flutter_native_splash: ^2.4.1
+
+flutter_launcher_icons:
+  android: true 
+  ios: true
+  image_path: "assets/icons/community.png"
 
 dev_dependencies:
   flutter_test:
