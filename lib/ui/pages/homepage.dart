@@ -47,6 +47,7 @@ class _HomepageState extends State<Homepage> {
       searchController.clear();
     });
   }
+
   @override
   void initState() {
     super.initState();
@@ -75,6 +76,8 @@ class _HomepageState extends State<Homepage> {
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.circular(12),
               ),
+              hintText: "Search book title",
+              hintStyle: TextStyle(color: Colors.grey[400]),
               filled: true,
               fillColor: Colors.white70,
               suffixIcon: IconButton(

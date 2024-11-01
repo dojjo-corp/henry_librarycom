@@ -35,4 +35,14 @@ class GutenbergService {
       throw Exception('Failed to load books from Project Gutenberg');
     }
   }
+
+  Future<Map<String, dynamic>> getBookDetails(String bookId) async {
+    try {
+      Map<String, dynamic> bookDetails = {};
+
+      return bookDetails;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
